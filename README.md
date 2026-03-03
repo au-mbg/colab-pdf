@@ -8,4 +8,6 @@ Installable with:
 %pip install -q "notebook_pdf @ git+https://github.com/au-mbg/notebook-pdf.git"
 ```
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/au-mbg/notebook-pdf/blob/master/example/test_notebook.ipynb)
+
 
