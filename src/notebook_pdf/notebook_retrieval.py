@@ -126,7 +126,7 @@ def get_notebook_content_from_drive():
     google.colab._message.blocking_request('save_notebook', timeout_sec=30)
     
     # Get notebook name and try common Drive locations
-    notebook_name = get_notebook_name().replace('.ipynb', '')
+    notebook_name = str(get_notebook_name()).replace('.ipynb', '')
     
     possible_paths = [
         pathlib.Path(f'/content/drive/MyDrive/Colab Notebooks/{notebook_name}'),
