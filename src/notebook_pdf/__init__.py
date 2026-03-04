@@ -1,7 +1,7 @@
-"""PDF generation utilities for Colab notebooks."""
+"""PDF generation utilities for Colab and local Jupyter notebooks."""
 
-from .download_pdf import colab2pdf, colab2pdf_widget
 from .magic import register_magic
+from .notebook2pdf import notebook2pdf, notebook2pdf_widget
 from .notebook_retrieval import (
     GetIpynbTimeoutError,
     get_notebook_content,
@@ -12,8 +12,8 @@ from .notebook_retrieval import (
 register_magic()
 
 __all__ = [
-    'colab2pdf',
-    'colab2pdf_widget',
+    'notebook2pdf',
+    'notebook2pdf_widget',
     'get_notebook_content',
     'get_notebook_name',
     'GetIpynbTimeoutError',
