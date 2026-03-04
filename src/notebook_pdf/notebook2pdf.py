@@ -4,6 +4,7 @@ import datetime
 import locale
 import pathlib
 import warnings
+from typing import Literal
 
 import IPython
 import IPython.display
@@ -25,7 +26,10 @@ from .render import (
 )
 
 
-def _notebook2pdf_colab(name: str | None, retrieval_method: str, **kwargs) -> str:
+RetrievalMethod = Literal["drive", "timeout", "blocking"]
+
+
+def _notebook2pdf_colab(name: str | None, retrieval_method: RetrievalMethod, **kwargs) -> str:
     """Colab-specific PDF conversion: retrieve, render, and trigger browser download.
 
     Returns:
@@ -108,7 +112,7 @@ def _notebook2pdf_local(path: pathlib.Path | str | None, **kwargs) -> str:
 def notebook2pdf(
     name: str | None = None,
     path: str | pathlib.Path | None = None,
-    retrieval_method: str = "drive",
+    retrieval_method: RetrievalMethod = "drive",
     **kwargs,
 ) -> str | None:
     """Convert the current notebook to PDF and deliver it.
@@ -145,6 +149,9 @@ def notebook2pdf(
 
 def notebook2pdf_widget() -> None:
     """Display an interactive widget to convert and download the current notebook as PDF."""
+    if is_colab():
+        from google.colab import output
+        output.enable_custom_widget_manager()
 
     def convert(b):
         try:
