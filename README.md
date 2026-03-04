@@ -39,10 +39,14 @@ Note that blocking retrieval relies on an undocumented Colab API and can sometim
 
 ### Local Jupyter
 
-Pass the path to the notebook explicitly:
-
 ```python
 from notebook_pdf import notebook2pdf
+notebook2pdf()
+```
+
+The notebook path is detected automatically. If detection fails, pass the path explicitly:
+
+```python
 notebook2pdf(path="my_notebook.ipynb")
 ```
 
